@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
+import TaskList from './components/TaskList';
+import MemoList from './components/MemoList';
+import AddTaskForm from './components/AddTaskForm';
+import AddMemoForm from './components/AddMemoForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Theme appearance="light" accentColor="mint" radius="medium">
+      <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+        <h1>夫婦のTODO共有アプリ</h1>
+        
+        <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: '1fr 1fr' }}>
+          <div>
+            <h2>タスク</h2>
+            <AddTaskForm />
+            <TaskList />
+          </div>
+          
+          <div>
+            <h2>メモ</h2>
+            <AddMemoForm />
+            <MemoList />
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Theme>
+  );
 }
 
-export default App
+export default App;
